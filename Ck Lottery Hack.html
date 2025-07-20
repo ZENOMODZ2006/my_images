@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI FREE</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    .login-box {
+      background: #111;
+      padding: 30px 20px;
+      border-radius: 16px;
+      box-shadow: 0 0 12px #4CAF50;
+      text-align: center;
+      width: 300px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .login-box h2 {
+      color: #4CAF50;
+      margin-bottom: 16px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 14px;
+      background: #222;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 16px;
+      box-shadow: inset 0 0 4px #4CAF50;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background: #4CAF50;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    .login-box button:hover {
+      background: #43a047;
+    }
+
+    iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      display: block;
+      z-index: 1;
+    }
+
+    #vipPanel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px 16px;
+      background: #111;
+      color: #4CAF50;
+      border-bottom: 2px solid #4CAF50;
+      box-shadow: 0 2px 12px rgba(76, 175, 80, 0.3);
+      font-size: 14px;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    #vipPanel span {
+      white-space: nowrap;
+    }
+
+    .period-label { color: orange; }
+    .timer-label { color: #fff; }
+    .ai-label { color: #4CAF50; }
+    .ai-value {
+      color: #00ff00;
+      text-shadow: 0 0 4px #00ff00;
+      font-weight: bold;
+    }
+
+    #toggleIcon {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 58px;
+      height: 58px;
+      font-size: 28px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #4CAF50, #2e7d32);
+      color: white;
+      border: 2px solid #66bb6a;
+      box-shadow: 0 0 12px #4CAF5088, 0 0 18px #66bb6a99, inset 0 0 8px #4CAF5055;
+      display: none;
+      cursor: pointer;
+      z-index: 10001;
+      transition: all 0.3s ease;
+    }
+
+    #toggleIcon:hover {
+      transform: scale(1.1);
+    }
+
+    #openLogin {
+      position: fixed;
+      top: 80px;
+      right: 30px;
+      padding: 10px 16px;
+      background: #4CAF50;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 10001;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <iframe id="mainFrame" src="https://cklottery.cc/#/register?invitationCode=52278400806"></iframe>
+
+  <div id="vipPanel" ondblclick="hidePanel()">
+    <span class="period-label">Period: <span id="period1m">------</span></span>
+    <span class="timer-label">Next in: <span id="timer1m">--:--</span></span>
+    <span class="ai-label">AI: <span id="randomWord" class="ai-value">Big</span></span>
+  </div>
+
+  <button id="toggleIcon" onclick="showPanel()" title="Show Panel">♥️</button>
+
+  <button id="openLogin" onclick="openModal()">Login</button>
+
+  <div class="modal-overlay" id="loginModal">
+    <div class="login-box">
+      <h2>Please Login</h2>
+      <input type="password" id="passwordInput" placeholder="Password ထည့်ပေးပါ" />
+      <button onclick="checkLogin()">အတည်ပြုမည်</button>
+    </div>
+  </div>
+
+  <script>
+    const vipPanel = document.getElementById('vipPanel');
+    const toggleIcon = document.getElementById('toggleIcon');
+    const randomWordEl = document.getElementById('randomWord');
+    const loginModal = document.getElementById('loginModal');
+    const openLoginBtn = document.getElementById('openLogin');
+
+    function openModal() {
+      loginModal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      loginModal.style.display = 'none';
+    }
+
+    function checkLogin() {
+      const pw = document.getElementById('passwordInput').value;
+      const correctPassword = atob('QWVpb3U1NDUk'); // "Aeiou545$"
+      if (pw === correctPassword) {
+        closeModal();
+        vipPanel.style.display = 'flex';
+        openLoginBtn.style.display = 'none';
+      } else {
+        alert('Password မှားနေပါတယ်');
+      }
+    }
+
+    function hidePanel() {
+      vipPanel.style.display = 'none';
+      toggleIcon.style.display = 'block';
+    }
+
+    function showPanel() {
+      vipPanel.style.display = 'flex';
+      toggleIcon.style.display = 'none';
+    }
+
+    let lastMinute = -1;
+    const words = ['Big', 'Small'];
+
+    function updateData() {
+      const now = new Date();
+      const seconds = now.getUTCSeconds();
+      const remainingSeconds = 60 - seconds;
+      const minutes = now.getUTCMinutes();
+      const hours = now.getUTCHours();
+      const totalMinutes = hours * 60 + minutes;
+
+      if (seconds === 0 && lastMinute !== minutes) {
+        randomWordEl.textContent = words[Math.floor(Math.random() * words.length)];
+        lastMinute = minutes;
+      }
+
+      const year = now.getUTCFullYear();
+      const month = String(now.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(now.getUTCDate()).padStart(2, '0');
+      const dateStr = `${year}${month}${day}`;
+      const periodNumber = dateStr + '1000' + String(10001 + totalMinutes);
+      document.getElementById('period1m').textContent = periodNumber;
+
+      const formattedTime = `00:${String(remainingSeconds).padStart(2, '0')}`;
+      document.getElementById('timer1m').textContent = formattedTime;
+    }
+
+    loginModal.addEventListener('click', function(event) {
+      if (event.target === loginModal) {
+        closeModal();
+      }
+    });
+
+    setInterval(updateData, 1000);
+    updateData();
+  </script>
+</body>
+</html>
