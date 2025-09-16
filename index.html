@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZENO CK LOTTERY HACK</title>
+<style>
+:root{
+  --primary-gradient: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+  --gold-gradient: linear-gradient(135deg,#ffd700 0%,#ffb347 100%);
+  --dark-gradient: linear-gradient(135deg,#0c0c0c 0%,#1a1a2e 50%,#16213e 100%);
+  --glass-border: rgba(255,255,255,.15);
+  --text-primary:#fff;
+  --text-secondary:rgba(255,255,255,.8);
+  --shadow:0 12px 40px rgba(0,0,0,.25);
+  --big:#00ff88;
+  --small:#ff2d75;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
+  min-height:100vh;background:var(--dark-gradient);color:var(--text-primary);overflow:hidden
+}
+.bg{position:fixed;inset:0;z-index:-1}
+.orb{position:absolute;border-radius:50%;background:linear-gradient(45deg,rgba(102,126,234,.12),rgba(118,75,162,.12));filter:blur(2px);animation:float 6s ease-in-out infinite}
+.orb.o1{width:200px;height:200px;left:10%;top:10%}
+.orb.o2{width:150px;height:150px;right:10%;top:60%;animation-delay:1.5s}
+.orb.o3{width:110px;height:110px;left:60%;bottom:15%;animation-delay:3s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+
+#loginBtn{
+position:fixed;top:20px;right:20px;z-index:10;
+padding:12px 22px;border:none;border-radius:10px;
+background:var(--gold-gradient);font-weight:800;color:#000;
+cursor:pointer;font-size:13px;
+}
+
+.pred{
+position:fixed;top:20px;left:50%;transform:translateX(-50%);
+z-index:20;width:340px;border-radius:16px;
+border:2px solid var(--glass-border);
+background:rgba(0,0,0,.35);backdrop-filter:blur(18px);
+box-shadow:var(--shadow);display:none;
+}
+.pred-body{padding:18px}
+.pred h4{display:flex;align-items:center;gap:8px;margin:0 0 6px 0}
+.meta{display:flex;justify-content:space-between;color:var(--text-secondary);font-size:13px;margin:8px 0 12px}
+.result{font-size:24px;font-weight:800;text-align:center;padding:10px;border-radius:12px;background:rgba(0,0,0,.35)}
+.result.BIG{color:var(--big);border:2px solid rgba(0,255,136,.25)}
+.result.SMALL{color:var(--small);border:2px solid rgba(255,45,117,.25)}
+
+.toggle{
+position:fixed;bottom:45px;padding:12px 16px;border:none;border-radius:999px;
+font-weight:800;cursor:pointer;background:var(--gold-gradient);
+color:#000;z-index:10;display:none;margin-right:10px;
+}
+#toggleServer{left:20px;}
+#togglePred{right:20px;}
+
+.modal-overlay{
+position:fixed;inset:0;background:rgba(0,0,0,0.65);
+display:none;align-items:flex-start;justify-content:center;z-index:15;
+padding-top:60px;
+}
+.modal-box{
+width:300px;padding:24px;border-radius:16px;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(18px);
+border:2px solid var(--glass-border);
+text-align:center;box-shadow:var(--shadow);
+}
+.modal-box h2{
+font-size:20px;margin-bottom:15px;
+background:var(--gold-gradient);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.modal-box input{
+width:100%;padding:12px;border-radius:10px;
+border:2px solid var(--gold-gradient);margin-bottom:12px;
+text-align:center;font-size:14px;
+}
+.modal-box button{
+width:100%;padding:12px;border:none;border-radius:10px;
+font-weight:bold;background:var(--gold-gradient);cursor:pointer;
+}
+
+.error-box{
+width:260px;padding:20px;border-radius:14px;
+background:linear-gradient(135deg,#2c0b0e,#1a1a2e);
+text-align:center;box-shadow:0 0 20px rgba(255,0,0,.4);
+animation:pop 0.25s ease;
+}
+.error-box h3{
+color:#ff4d6d;margin-bottom:10px;font-size:18px;
+}
+.error-box button{
+margin-top:10px;width:100%;padding:10px;
+border:none;border-radius:8px;background:var(--gold-gradient);
+font-weight:bold;cursor:pointer;
+}
+@keyframes pop{0%{transform:scale(.8);opacity:.3}100%{transform:scale(1);opacity:1}}
+</style>
+</head>
+<body>
+<div class="bg">
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+</div>
+
+<iframe src="https://cklottery.cc/#/register?invitationCode=52278400806"
+        style="width:100%;height:100%;position:fixed;inset:0;z-index:0;border:0;"></iframe>
+
+<button id="loginBtn">🔐 Login</button>
+
+<div class="pred" id="pred1">
+  <div class="pred-body">
+    <h4>🧠 CK LOTTERY HACK (CK)</h4>
+    <div class="meta"><div>Period: <span id="period1">-</span></div><div><span id="index1">-</span></div></div>
+    <div id="result1" class="result"><span id="text1">Predicting…</span></div>
+  </div>
+</div>
+
+<button class="toggle" id="toggleServer">Mine</button>
+<button class="toggle" id="togglePred">Hide Box</button>
+
+<div class="modal-overlay" id="mineModal">
+  <div class="modal-box" style="max-width:420px;max-height:90vh;overflow:auto;">
+    <div class="panel" style="background:rgba(0,0,0,.35);backdrop-filter:blur(18px);border:2px solid rgba(255,255,255,.15);border-radius:12px;padding:16px;color:#fff;">
+      <div style="margin:8px 0 12px;text-align:center;">
+        <button id="predictBtn" style="padding:10px 16px;border:none;border-radius:8px;background:#00ffb2;color:#000;font-weight:bold;cursor:pointer;">⚙ PREDICT</button>
+      </div>
+      <div class="status" style="background:rgba(0,0,0,.35);backdrop-filter:blur(18px);padding:12px;border-radius:8px;margin-bottom:12px;">
+        <div id="statusLine">COINS DETECTED: <strong id="foundCount">0</strong>/<span id="totalCount">5</span></div>
+        <div id="statusSub" style="margin-top:6px;">Awaiting input…</div>
+        <div style="margin-top:8px;">
+          <div class="countdown" id="countdown">NEXT PREDICTION : <span id="cdval">READY</span></div>
+        </div>
+      </div>
+      <div id="grid" class="grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;"></div>
+    </div>
+    <button onclick="closeMine()" style="margin-top:10px;width:100%;padding:10px;border:none;border-radius:8px;background:var(--gold-gradient);font-weight:bold;cursor:pointer;">Close</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <h2>Login Access</h2>
+    <input type="password" id="passwordInput" placeholder="Enter Password">
+    <button onclick="checkLogin()">Confirm</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="errorModal">
+  <div class="error-box">
+    <h3 id="errorMsg">❗Key မှားနေပါတယ်❗</h3>
+    <button onclick="closeError()">OK</button>
+  </div>
+</div>
+
+<script>
+const loginBtn = document.getElementById('loginBtn');
+const loginModal = document.getElementById('loginModal');
+const passwordInput = document.getElementById('passwordInput');
+const pred1 = document.getElementById('pred1');
+const toggleServer = document.getElementById('toggleServer');
+const togglePred = document.getElementById('togglePred');
+const errorModal = document.getElementById('errorModal');
+const errorMsg = document.getElementById('errorMsg');
+const mineModal = document.getElementById('mineModal');
+let boxesVisible = true;
+let remotePasswords = [];
+
+async function fetchPasswords(){
+  try {
+    const res = await fetch("https://kpt.xalyon.xyz/KhaungHtet/pass.json",{cache:"no-cache"});
+    remotePasswords = await res.json();
+  } catch(e){ console.error("Password fetch error",e); }
+}
+function onLoginSuccess(){
+  pred1.style.display='block';
+  toggleServer.style.display='inline-block';
+  togglePred.style.display='inline-block';
+  loginBtn.style.display='none';
+  loginModal.style.display='none';
+  boxesVisible=true;
+  toggleServer.textContent='Mine';
+  togglePred.textContent='Hide Box';
+  localStorage.setItem("ck_logged_in", "true");
+}
+loginBtn.onclick = ()=>{ loginModal.style.display='flex'; };
+loginModal.onclick = ()=>{ loginModal.style.display='none'; };
+document.querySelectorAll('.modal-box').forEach(el=>el.onclick=e=>e.stopPropagation());
+errorModal.onclick = e=>e.stopPropagation();
+
+function checkLogin(){
+  const pw = passwordInput.value.trim();
+  if(!pw) return;
+  const found = remotePasswords.find(p=>p.pass === pw);
+  if(!found){
+    errorMsg.textContent="❗Key မှားနေပါတယ်❗";
+    loginModal.style.display='none';
+    errorModal.style.display='flex';
+    return;
+  }
+  if(found.used === "true"){
+    errorMsg.textContent="🔒 Password အသုံးပြုပြီးသားဖြစ်ပါတယ်";
+    loginModal.style.display='none';
+    errorModal.style.display='flex';
+    return;
+  }
+  onLoginSuccess();
+  fetch("update_api.php",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({pass:pw, used:true})
+  });
+}
+function closeError(){
+  errorModal.style.display='none';
+  loginModal.style.display='flex';
+  passwordInput.value = '';
+}
+
+// CK dialog box toggle
+togglePred.onclick=()=>{
+  boxesVisible=!boxesVisible;
+  if(boxesVisible){
+    pred1.style.display='block';
+    togglePred.textContent='Hide Box';
+  }else{
+    pred1.style.display='none';
+    togglePred.textContent='Show Box';
+  }
+};
+
+// Mine dialog box toggle
+toggleServer.onclick=()=>{
+  if(mineModal.style.display==='flex'){
+    mineModal.style.display='none';
+  }else{
+    mineModal.style.display='flex';
+    pred1.style.display='none';
+    boxesVisible=false;
+    togglePred.textContent='Show Box';
+  }
+};
+
+function closeMine(){
+  mineModal.style.display='none';
+}
+
+const getMM=()=>{const now=new Date();const utc=now.getTime()+now.getTimezoneOffset()*60000;return new Date(utc+6.5*3600000)};
+const pad=(n,w=2)=>String(n).padStart(w,'0');
+function initServer1(){
+  const REF="2025-06-19T16:38:30+06:30"; const SUF=51217;
+  const base=()=>{const r=new Date(REF);const s=new Date(r);s.setHours(0,0,0,0);const secs=Math.floor((r-s)/1000);return SUF-Math.floor(secs/30)};
+  const BASE=base()+1;
+  const pattern=["BIG","SMALL","BIG","SMALL","BIG","BIG","SMALL","BIG","BIG","SMALL","SMALL","BIG","BIG","SMALL","SMALL","BIG","SMALL","BIG","SMALL","SMALL","BIG","BIG","BIG","SMALL","SMALL","SMALL","BIG","SMALL","BIG","BIG","SMALL","BIG","SMALL","SMALL","SMALL","BIG","SMALL","SMALL","BIG","BIG","BIG","SMALL","BIG","SMALL","SMALL","BIG","BIG","SMALL","BIG","SMALL","BIG","BIG","SMALL","SMALL","BIG","SMALL","BIG","BIG","SMALL","SMALL","BIG","SMALL","BIG","SMALL","BIG","BIG"];
+  function tick(){
+    const now=getMM(),y=now.getFullYear(),m=pad(now.getMonth()+1),d=pad(now.getDate());
+    const start=new Date(now); start.setHours(0,0,0,0);
+    const secs=Math.floor((now-start)/1000);
+    const idx=BASE+Math.floor(secs/30);
+    const period=`${y}${m}${d}1000${pad(idx,5)}`;
+    const res=pattern[idx%pattern.length];
+    document.getElementById('period1').textContent=period;
+    document.getElementById('index1').textContent=idx;
+    document.getElementById('text1').textContent=res;
+    document.getElementById('result1').className='result '+res;
+  }
+  tick(); setInterval(tick,1000);
+}
+
+const gridEl = document.getElementById('grid');
+const predictBtn = document.getElementById('predictBtn');
+const statusSub  = document.getElementById('statusSub');
+const cdval = document.getElementById('cdval');
+const foundCountEl = document.getElementById('foundCount');
+const totalCountEl = document.getElementById('totalCount');
+const SIZE = 5; const TOTAL_COINS = 3;
+let cooldown = 0, cooldownTimer = null;
+
+function buildGrid(){
+  gridEl.innerHTML = '';
+  for(let i=0;i<SIZE*SIZE;i++){
+    const cell = document.createElement('div');
+    cell.style.cssText = "aspect-ratio:1/1;background:#222;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#555;font-weight:bold;";
+    cell.textContent = '×';
+    gridEl.appendChild(cell);
+  }
+}
+function randomCoins(n, max){const s = new Set();while(s.size<n) s.add(Math.floor(Math.random()*max));return [...s];}
+function renderCoins(positions){
+  [...gridEl.children].forEach((cell, i) => {
+    cell.textContent = '×'; cell.style.color = '#555'; cell.style.background = '#222';
+    if(positions.includes(i)){ cell.textContent = '💰'; cell.style.background = '#0f0a'; cell.style.color = '#ff0'; }
+  });
+}
+function setCooldown(seconds){
+  cooldown = seconds; predictBtn.disabled = cooldown>0; updateCD();
+  if(cooldownTimer) clearInterval(cooldownTimer);
+  if(cooldown>0){
+    cooldownTimer = setInterval(() => {
+      cooldown -= 1; predictBtn.disabled = cooldown>0; updateCD();
+      if(cooldown<=0){ clearInterval(cooldownTimer); statusSub.textContent='Ready for next prediction.'; }
+    },1000);
+  }
+}
+function updateCD(){ cdval.textContent = cooldown<=0 ? 'READY' : (cooldown+'S'); }
+function runPrediction(){
+  const coins = randomCoins(TOTAL_COINS, SIZE*SIZE);
+  renderCoins(coins);
+  foundCountEl.textContent = coins.length.toString();
+  statusSub.textContent = ' FOUND ' + coins.length + ' COINS';
+  setCooldown(27);
+}
+buildGrid(); totalCountEl.textContent='5'; setCooldown(0);
+predictBtn.addEventListener('click', runPrediction);
+
+window.onload=()=>{
+  fetchPasswords();
+  if(localStorage.getItem("ck_logged_in")==="true"){ onLoginSuccess(); }
+};
+initServer1();
+</script>
+</body>
+</html>
